@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Fallback: mailto
       const subject = encodeURIComponent('Free Estimate Request — ' + (data.service||'') + ' (' + data.project_type + ')');
       const body = encodeURIComponent('Name: '+data.name+'\nPhone: '+data.phone+'\nType: '+data.project_type+'\nService: '+(data.service||'')+'\n\n'+(data.message||''));
-      window.location.href = 'mailto:Rodrigo@summitwallsolutions.com?subject='+subject+'&body='+body;
+      window.location.href = 'mailto:contact@summitwallsolutions.com?subject='+subject+'&body='+body;
       showSuccess();
     });
   }

@@ -209,3 +209,57 @@ Tarefa Claude Code (resumo desta seção):
    Founder full name -> Rodrigo Gadelha Bandeira. Add project types (Residential,
    Commercial, Tenant Improvement, Basement Development, Renovation) into copy and
    schema. Update insurance to 'WCB + Liability'. Then rebuild."
+
+====================================================================
+⚠️ EMAILS (decisão Rubens) — DOIS emails, propósitos diferentes
+====================================================================
+- contact@summitwallsolutions.com  -> PÚBLICO/GERAL: usar no footer, página de
+  contato, formulário (campo "to"), e como email principal exibido no site.
+- Rodrigo@summitwallsolutions.com   -> CONTATO DIRETO: usar no About (fundador) e
+  na seção/página B2B (subcontractor) para GCs falarem direto com o Rodrigo.
+
+ATENÇÃO: na última limpeza setamos TUDO para Rodrigo@. Reabrir e ajustar:
+  - footer (build.py) + página contact + formulário  -> contact@summitwallsolutions.com
+  - About + B2B page  -> Rodrigo@summitwallsolutions.com
+  - schema: email principal = contact@ ; founder/contactPoint pode citar Rodrigo@
+Tarefa Claude Code:
+  "Use TWO emails: contact@summitwallsolutions.com as the public/general address
+   (footer, contact page, the form's destination, schema main email) and
+   Rodrigo@summitwallsolutions.com as the direct line (About founder + the B2B/
+   for-contractors page). Update accordingly and rebuild."
+
+====================================================================
+📷 IMAGENS REAIS (usar no site) — pendente otimizar p/ WebP
+====================================================================
+Recebidas do Rubens (fotos com a marca aplicada em obra real — ótima prova social):
+  1. VAN na obra — ATENÇÃO: versão recebida tem dados ANTIGOS (gmail, @summitwallsolutions,
+     "Texture"). Rubens vai gerar versão corrigida em outra IA. Aguardar a nova.
+  2. JOB SITE SIGN (placa) na obra — JÁ ESTÁ CORRETA:
+        - Serviços certos (Painting | Site Cleanup, sem Texture)
+        - Instagram certo (@summitwallsolutins)
+        - "Serving Edmonton & Surrounding Areas"
+        - "WCB Insured · Quality Guaranteed"
+        - tagline secundário "Building Quality. Delivering Trust."
+        - email exibido: contact@summitwallsolutions.com
+     -> PODE USAR JÁ.
+
+Onde usar as imagens (em vários lugares):
+  - Hero da home (foto de fundo levemente escurecida OU bloco lateral)
+  - Seção Sobre / "Serving Edmonton & area"
+  - Seção/página B2B (van+placa na obra = trabalha com construtoras)
+  - og:image + twitter:image (compartilhamento em redes/WhatsApp)
+
+Tarefas:
+  A) Otimizar: converter para WebP comprimido (e manter um JPG/PNG fallback).
+     Guardar em /assets. Ex: assets/sign-jobsite.webp, assets/van.webp
+  B) Tarefa Claude Code (depois que as imagens estiverem em /assets):
+     "Add the real photos (assets/sign-jobsite.webp, assets/van.webp) to the site:
+      a darkened hero background or side image on the home hero, a photo block in the
+      About/service-area section, and on the for-contractors page. Set og:image and
+      twitter:image in build.py head() to an absolute URL of one of these. Use
+      loading=lazy and width/height to avoid layout shift. Rebuild."
+  C) Possível tagline secundário no site: "Building Quality. Delivering Trust."
+     (da placa) — usar como subtítulo em alguma seção.
+
+NOTA: a tagline secundária da placa diz "Quality Guaranteed" — alinhado com a
+garantia de 1 ano que já está no site. Manter consistente.

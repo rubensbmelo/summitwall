@@ -3,12 +3,13 @@
 Assembles shared header/footer into each page so the shipped files are
 pure static HTML (best for SEO + Vercel). Run:  python3 build.py
 """
-import os, pathlib
+import os, pathlib, json
 
 OUT = pathlib.Path(__file__).parent
 SITE = "https://summitwallsolutions.com"
 PHONE = "587-357-8181"
-EMAIL = "Rodrigo@summitwallsolutions.com"
+EMAIL = "contact@summitwallsolutions.com"
+EMAIL_DIRECT = "Rodrigo@summitwallsolutions.com"
 
 CITIES = [
     ("edmonton", "Edmonton"),
@@ -23,10 +24,88 @@ NAV = [
     ("services.html", "Services"),
     ("about.html", "About"),
     ("locations.html", "Service Areas"),
+    ("for-contractors.html", "For Contractors"),
     ("contact.html", "Contact"),
 ]
 
-def head(title, desc, rel="", canonical="", body_class=""):
+AREA_SERVED = ["Edmonton","St. Albert","Sherwood Park","Spruce Grove",
+               "Leduc","Fort Saskatchewan","Stony Plain"]
+SVC_TYPES   = ["Steel Stud Framing","Drywall Installation","Taping and Finishing",
+               "Insulation","Painting","Site Cleanup"]
+
+def _biz():
+    return {
+        "@context": "https://schema.org",
+        "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+        "name": "Summit Wall Solutions",
+        "founder": {"@type": "Person", "name": "Rodrigo Gadelha Bandeira"},
+        "telephone": "+1-587-357-8181",
+        "email": EMAIL,
+        "url": SITE,
+        "logo": f"{SITE}/assets/logo-lockup.png",
+        "image": f"{SITE}/assets/van.webp",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Edmonton",
+            "addressRegion": "AB",
+            "addressCountry": "CA"
+        },
+        "areaServed": [{"@type": "City", "name": a} for a in AREA_SERVED],
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "07:00",
+            "closes": "17:00"
+        },
+        "priceRange": "$$",
+        "sameAs": ["https://www.instagram.com/summitwallsolutins"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Wall Solutions Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": s}}
+                for s in SVC_TYPES
+            ]
+        }
+    }
+
+def _bc(crumbs):
+    """BreadcrumbList. crumbs = [(name, url), ...]"""
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "name": n, "item": u}
+            for i, (n, u) in enumerate(crumbs)
+        ]
+    }
+
+def _faq(pairs):
+    """FAQPage. Strips HTML tags from answers before serialising."""
+    import re
+    strip = lambda t: re.sub(r'<[^>]+>', '', t)
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": strip(a)}}
+            for q, a in pairs
+        ]
+    }
+
+def ld(*dicts):
+    """Wrap each schema dict in its own <script type=application/ld+json> block."""
+    parts = []
+    for d in dicts:
+        parts.append(
+            '  <script type="application/ld+json">\n' +
+            json.dumps(d, ensure_ascii=False, indent=2) +
+            '\n  </script>'
+        )
+    return "\n".join(parts)
+
+def head(title, desc, rel="", canonical="", body_class="", schema=""):
     links = "\n".join(f'    <link rel="stylesheet" href="{rel}css/style.css">' for _ in [0])
     body_tag = f'<body class="{body_class}">' if body_class else '<body>'
     return f"""<!DOCTYPE html>
@@ -45,10 +124,14 @@ def head(title, desc, rel="", canonical="", body_class=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://summitwallsolutions.com/assets/van.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://summitwallsolutions.com/assets/van.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 {links}
+{schema}
 </head>
 {body_tag}"""
 
@@ -109,9 +192,9 @@ def footer(rel=""):
 </body>
 </html>"""
 
-def page(filename, title, desc, body, rel="", canonical=None, subdir=False, body_class=""):
+def page(filename, title, desc, body, rel="", canonical=None, subdir=False, body_class="", schema=""):
     canonical = canonical if canonical is not None else filename
-    html = head(title, desc, rel, canonical, body_class) + header(rel) + body + footer(rel)
+    html = head(title, desc, rel, canonical, body_class, schema) + header(rel) + body + footer(rel)
     target = OUT / filename
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(html, encoding="utf-8")
@@ -121,5 +204,6 @@ def page(filename, title, desc, body, rel="", canonical=None, subdir=False, body
 from pages import bodies  # noqa
 
 if __name__ == "__main__":
-    bodies.build(page, CITIES, PHONE, EMAIL)
+    bodies.build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
+                 ld=ld, biz=_biz, bc=_bc, faq_sc=_faq, site=SITE)
     print("Done.")
