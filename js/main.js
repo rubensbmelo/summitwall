@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ---- Estimate calculator ---- */
   const calcBtn = document.getElementById('calc-run');
   if (calcBtn) {
-    const rates = { frame:[3.5,5.5], insulation:[1.25,2.0], drywall:[1.75,3.0], taping:[0.8,1.75], painting:[1.25,2.0], texture:[0.6,1.25] };
+    const rates = { frame:[3.5,5.5], insulation:[1.25,2.0], drywall:[1.75,3.0], taping:[0.8,1.75], painting:[1.25,2.0] };
+    const flatRates = { cleanup:[300,600] };
     const sizes = { small:250, medium:800, large:1800 };
     calcBtn.addEventListener('click', () => {
       const services = [...document.querySelectorAll('[data-svc].active')].map(c => c.dataset.svc);
@@ -83,7 +84,10 @@ document.addEventListener('DOMContentLoaded', function () {
       const sqft = sizes[size];
       const commercial = document.querySelector('[data-type].active')?.dataset.type === 'com';
       let lo = 0, hi = 0;
-      services.forEach(s => { if (rates[s]) { lo += rates[s][0]*sqft; hi += rates[s][1]*sqft; } });
+      services.forEach(s => {
+        if (rates[s]) { lo += rates[s][0]*sqft; hi += rates[s][1]*sqft; }
+        else if (flatRates[s]) { lo += flatRates[s][0]; hi += flatRates[s][1]; }
+      });
       if (commercial) { lo *= 1.2; hi *= 1.3; }
       lo = Math.max(Math.round(lo/50)*50, 800);
       hi = Math.max(Math.round(hi/100)*100, 1200);
@@ -122,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
       // Fallback: mailto
       const subject = encodeURIComponent('Free Estimate Request — ' + (data.service||'') + ' (' + data.project_type + ')');
       const body = encodeURIComponent('Name: '+data.name+'\nPhone: '+data.phone+'\nType: '+data.project_type+'\nService: '+(data.service||'')+'\n\n'+(data.message||''));
-      window.location.href = 'mailto:Summitwallsolutions@gmail.com?subject='+subject+'&body='+body;
+      window.location.href = 'mailto:Rodrigo@summitwallsolutions.com?subject='+subject+'&body='+body;
       showSuccess();
     });
   }

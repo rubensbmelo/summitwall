@@ -3,12 +3,12 @@
 CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>'
 
 SERVICES = [
-    ("01","Steel Frame","Precise light-gauge steel stud framing for interior partitions, load-bearing walls and complex layouts — straight, square and code-compliant.",["Interior","Exterior","Load-Bearing"]),
+    ("01","Steel Stud Framing","Precise light-gauge steel stud framing for interior partitions, load-bearing walls and complex layouts — straight, square and code-compliant.",["Interior","Exterior","Load-Bearing"]),
     ("02","Insulation","Batt and sound attenuation insulation installed for energy efficiency, fire separation and noise control — fully code-compliant for Alberta.",["Batt","Sound","Fire Separation"]),
-    ("03","Drywall","Professional hanging of standard, moisture-resistant and fire-rated gypsum board. Clean cuts, tight joints, solid fastening.",["Standard","Moisture-Resist","Fire-Rated"]),
-    ("04","Taping & Mudding","Seamless taping, mudding and sanding that eliminates visible joints — glass-smooth walls ready to paint.",["Taping","Mudding","Sanding"]),
+    ("03","Drywall Installation","Professional hanging of standard, moisture-resistant and fire-rated gypsum board. Clean cuts, tight joints, solid fastening.",["Standard","Moisture-Resist","Fire-Rated"]),
+    ("04","Taping and Finishing","Seamless taping, mudding and sanding that eliminates visible joints — glass-smooth walls ready to paint.",["Taping","Mudding","Sanding"]),
     ("05","Painting","Interior painting with premium primers and topcoats. Clean lines, even coverage and a finish that lasts.",["Interior","Primer","Commercial"]),
-    ("06","Texture","Knockdown, orange peel, skip trowel and custom spray textures applied evenly for a consistent professional look.",["Knockdown","Orange Peel","Spray"]),
+    ("06","Site Cleanup","Full jobsite cleanup after every phase — debris removed, surfaces protected and your space left ready for the next trade or final walk-through.",["Daily Cleanup","Debris Removal","Final Clean"]),
 ]
 
 def svc_grid():
@@ -40,9 +40,9 @@ def calculator():
       <p class="intro">Select your services and project size for an instant price range. A free in-home estimate confirms exact pricing.</p></div>
       <div class="calc-box reveal">
         <div class="calc-step"><label>1 — Services needed</label><div class="chip-row" data-group="multi">
-          <button class="chip" data-svc="frame">Steel Frame</button><button class="chip" data-svc="insulation">Insulation</button>
-          <button class="chip" data-svc="drywall">Drywall</button><button class="chip" data-svc="taping">Taping</button>
-          <button class="chip" data-svc="painting">Painting</button><button class="chip" data-svc="texture">Texture</button></div></div>
+          <button class="chip" data-svc="frame">Steel Stud Framing</button><button class="chip" data-svc="insulation">Insulation</button>
+          <button class="chip" data-svc="drywall">Drywall Installation</button><button class="chip" data-svc="taping">Taping and Finishing</button>
+          <button class="chip" data-svc="painting">Painting</button><button class="chip" data-svc="cleanup">Site Cleanup</button></div></div>
         <div class="calc-step"><label>2 — Project size</label><div class="chip-row" data-group="single">
           <button class="chip active" data-size="small">Small · 1–2 rooms</button>
           <button class="chip" data-size="medium">Medium · Basement</button>
@@ -61,7 +61,7 @@ def calculator():
 def testimonials():
     revs = [
         ("J","Jason M.","West Edmonton","Rodrigo and his team did an exceptional job on our basement. Framing was precise, drywall seamless, taping flawless — and they left the site cleaner than they found it every day."),
-        ("S","Sarah K.","Sherwood Park","Professional and reliable from start to finish. Showed up on time every day. The texture work on our ceilings is absolutely perfect."),
+        ("S","Sarah K.","Sherwood Park","Professional and reliable from start to finish. Showed up on time every day. The finish work on our ceilings and walls is absolutely perfect."),
         ("C","Carlos B.","St. Albert","Best drywall contractor we've used in Edmonton. Fair pricing, great communication and zero surprises on the invoice. Highly recommend."),
     ]
     cards = "".join(f'<div class="tcard reveal"><div class="stars">★★★★★</div><blockquote>"{q}"</blockquote><div class="who"><div class="avatar">{a}</div><div><b>{n}</b><span>{loc}, AB</span></div></div></div>' for a,n,loc,q in revs)
@@ -93,7 +93,7 @@ def build(page, CITIES, PHONE, EMAIL):
     <div class="wrap">
       <div class="eyebrow-badge reveal in"><i></i> Building Your Dream, One Wall at a Time — Since 2017</div>
       <h1 class="reveal in">Walls Built<br>To Last. <em>Finished</em><br>To Impress.</h1>
-      <p class="lead reveal in">Edmonton's trusted crew for steel framing, insulation, drywall, taping, painting and texture. Residential and commercial — one team, start to finish.</p>
+      <p class="lead reveal in">Edmonton's trusted crew for steel framing, insulation, drywall, taping and painting. Residential and commercial — one team, start to finish.</p>
       <div class="hero-actions reveal in">
         <a href="tel:5873578181" class="btn btn-primary">Call {PHONE}</a>
         <a href="services.html#estimate" class="btn btn-ghost">Get Instant Estimate</a>
@@ -108,8 +108,8 @@ def build(page, CITIES, PHONE, EMAIL):
   {testimonials()}
   {cta_strip(PHONE)}
 '''
-    page("index.html", "Summit Wall Solutions | Drywall, Steel Frame & Finishing — Edmonton, AB",
-         "Edmonton's trusted drywall, steel framing, insulation, taping, painting and texture experts. Free estimates. WCB insured. Since 2017.", home)
+    page("index.html", "Summit Wall Solutions | Drywall, Steel Stud Framing & Finishing — Edmonton, AB",
+         "Edmonton's trusted drywall, steel framing, insulation, taping and painting experts. Free estimates. WCB insured. Since 2017.", home)
 
     # ---------- SERVICES ----------
     services = f'''
@@ -128,8 +128,8 @@ def build(page, CITIES, PHONE, EMAIL):
     </div></div></section>
   {cta_strip(PHONE)}
 '''
-    page("services.html", "Services — Steel Frame, Drywall, Painting & More | Summit Wall Solutions",
-         "Steel framing, insulation, drywall, taping, painting and texture for Edmonton homes and businesses. Free estimate calculator inside.", services,
+    page("services.html", "Services — Steel Stud Framing, Drywall, Painting & More | Summit Wall Solutions",
+         "Steel stud framing, insulation, drywall installation, taping and painting for Edmonton homes and businesses. Free estimate calculator inside.", services,
          body_class="dark-hero")
 
     # ---------- ABOUT ----------
@@ -141,7 +141,7 @@ def build(page, CITIES, PHONE, EMAIL):
     <div class="about-copy reveal">
       <div class="eyebrow">Who We Are</div>
       <p class="lead-line">We treat every wall like it's going in our own home.</p>
-      <p>Founded by <strong>Rodrigo Gadelha</strong> in Edmonton, AB, Summit Wall Solutions has built its reputation one clean corner at a time since 2017. We handle the full wall — framing, insulation, drywall, taping, paint and texture — so you deal with one accountable team from start to finish.</p>
+      <p>Founded by <strong>Rodrigo Gadelha Bandeira</strong> in Edmonton, AB, Summit Wall Solutions has built its reputation one clean corner at a time since 2017. We handle the full wall — framing, insulation, drywall, taping and paint — so you deal with one accountable team from start to finish.</p>
       <p>We start every job with a clear scope, stick to the schedule we commit to, and leave your site clean at the end of every day. Most of our business comes from repeat clients and referrals — that's the standard we hold ourselves to.</p>
     </div>
     <div class="stats reveal">
@@ -155,7 +155,7 @@ def build(page, CITIES, PHONE, EMAIL):
   {cta_strip(PHONE)}
 '''
     page("about.html", "About Summit Wall Solutions | Edmonton Drywall Since 2017",
-         "Founded by Rodrigo Gadelha in 2017, Summit Wall Solutions is Edmonton's trusted full-wall contractor. WCB insured, 1-year warranty.", about,
+         "Founded by Rodrigo Gadelha Bandeira in 2017, Summit Wall Solutions is Edmonton's trusted full-wall contractor. WCB insured, 1-year warranty.", about,
          body_class="dark-hero")
 
     # ---------- CONTACT ----------
@@ -191,7 +191,7 @@ def build(page, CITIES, PHONE, EMAIL):
               <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="587 000-0000" required></div>
             </div>
             <div class="field"><label>Service needed</label><select name="service">
-              <option value="">Select a service…</option><option>Steel Frame</option><option>Insulation</option><option>Drywall Installation</option><option>Taping &amp; Mudding</option><option>Painting</option><option>Texture</option><option>Full Package</option><option>Not sure — need a consult</option></select></div>
+              <option value="">Select a service…</option><option>Steel Stud Framing</option><option>Insulation</option><option>Drywall Installation</option><option>Taping and Finishing</option><option>Painting</option><option>Site Cleanup</option><option>Full Package</option><option>Not sure — need a consult</option></select></div>
             <div class="field"><label>Project details</label><textarea name="message" placeholder="Tell us about your project — size, location, timeline…"></textarea></div>
             <button type="submit" class="form-submit">Send My Request &rarr;</button>
           </form>
@@ -206,7 +206,7 @@ def build(page, CITIES, PHONE, EMAIL):
 
     # ---------- LOCATIONS INDEX ----------
     city_cards = "".join(
-        f'<div class="svc reveal"><span class="num">📍</span><h3>{name}</h3><p>Steel framing, drywall, taping, painting and texture for {name} homes and businesses.</p><div style="margin-top:18px"><a href="locations/drywall-{slug}.html" class="btn btn-dark">{name} Drywall &rarr;</a></div></div>'
+        f'<div class="svc reveal"><span class="num">📍</span><h3>{name}</h3><p>Steel framing, drywall installation, taping and painting for {name} homes and businesses.</p><div style="margin-top:18px"><a href="locations/drywall-{slug}.html" class="btn btn-dark">{name} Drywall &rarr;</a></div></div>'
         for slug,name in CITIES)
     locations = f'''
   <section class="hero compact"><div class="hero-bg"><div class="sweep s1"></div><div class="sweep s2"></div></div>
@@ -226,7 +226,7 @@ def build(page, CITIES, PHONE, EMAIL):
   <section class="hero compact"><div class="hero-bg"><div class="sweep s1"></div><div class="sweep s2"></div></div>
     <div class="wrap"><div class="eyebrow-badge reveal in"><i></i> {name}, AB</div>
       <h1 class="reveal in">Drywall &amp;<br>Framing in <em>{name}</em></h1>
-      <p class="lead reveal in">Steel framing, insulation, drywall, taping, painting and texture for {name} homes and businesses. Free estimates · WCB insured · Since 2017.</p>
+      <p class="lead reveal in">Steel framing, insulation, drywall installation, taping and painting for {name} homes and businesses. Free estimates · WCB insured · Since 2017.</p>
       <div class="hero-actions reveal in"><a href="tel:5873578181" class="btn btn-primary">Call {PHONE}</a><a href="../contact.html" class="btn btn-ghost">Free Estimate</a></div></div></section>
   <section class="section"><div class="wrap">
     <div class="reveal"><div class="eyebrow">{name} Wall Services</div><h2>Your full-wall contractor in {name}.</h2>
@@ -238,5 +238,5 @@ def build(page, CITIES, PHONE, EMAIL):
 '''
         page(f"locations/drywall-{slug}.html",
              f"Drywall & Framing in {name}, AB | Summit Wall Solutions",
-             f"Drywall, steel framing, insulation, taping, painting and texture in {name}, AB. Free estimates, WCB insured. Call {PHONE}.",
+             f"Drywall installation, steel framing, insulation, taping and painting in {name}, AB. Free estimates, WCB insured. Call {PHONE}.",
              body, rel="../", canonical=f"locations/drywall-{slug}.html", body_class="dark-hero")

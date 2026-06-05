@@ -6,9 +6,9 @@ pure static HTML (best for SEO + Vercel). Run:  python3 build.py
 import os, pathlib
 
 OUT = pathlib.Path(__file__).parent
-SITE = "https://summitwallsolutions.ca"  # update when domain is live
+SITE = "https://summitwallsolutions.com"
 PHONE = "587-357-8181"
-EMAIL = "Summitwallsolutions@gmail.com"
+EMAIL = "Rodrigo@summitwallsolutions.com"
 
 CITIES = [
     ("edmonton", "Edmonton"),
@@ -74,7 +74,7 @@ def header(rel=""):
   </header>"""
 
 def footer(rel=""):
-    svc = "".join(f'<a href="{rel}services.html">{s}</a>' for s in ["Steel Frame","Insulation","Drywall","Taping & Mudding","Painting","Texture"])
+    svc = "".join(f'<a href="{rel}services.html">{s}</a>' for s in ["Steel Stud Framing","Insulation","Drywall Installation","Taping and Finishing","Painting","Site Cleanup"])
     areas = "".join(f'<a href="{rel}locations/drywall-{slug}.html">{name}</a>' for slug,name in CITIES)
     return f"""
   <footer class="site-footer">
@@ -100,7 +100,7 @@ def footer(rel=""):
         </div>
       </div>
       <div class="foot-bottom">
-        <span>&copy; <span id="year"></span> Summit Wall Solutions — Rodrigo Gadelha. All rights reserved.</span>
+        <span>&copy; <span id="year"></span> Summit Wall Solutions — Rodrigo Gadelha Bandeira. All rights reserved.</span>
         <span>Edmonton, AB · {PHONE} · Licensed & WCB Insured</span>
       </div>
     </div>
