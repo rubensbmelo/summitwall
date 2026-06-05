@@ -83,12 +83,163 @@ def faq():
     return f'''<section class="section"><div class="wrap"><div class="reveal"><div class="eyebrow">FAQ</div><h2>Common questions, straight answers.</h2></div><div class="faq reveal">{items}</div></div></section>'''
 
 
+SVC_PAGE_DATA = [
+    {
+        "slug":      "drywall-installation",
+        "name":      "Drywall Installation",
+        "h1":        "Drywall <em>Installation</em><br>in Edmonton",
+        "badge":     "Drywall Installation · Edmonton, AB",
+        "meta":      "Professional drywall installation in Edmonton, AB — standard, moisture-resistant and fire-rated gypsum board. Residential & commercial. Free estimates.",
+        "hero_lead": "Professional drywall installation for Edmonton homes, basements and commercial spaces — standard, moisture-resistant and fire-rated board, hung tight and ready for finishing. Free estimates · WCB insured · Since 2017.",
+        "intro":     "Summit Wall Solutions provides professional drywall installation in Edmonton for basement developments, new builds, condo renovations and commercial tenant improvements. We hang standard 1/2\" and 5/8\" gypsum board, moisture-resistant (MR) board for kitchens and bathrooms, and fire-rated Type X board wherever code requires — cut tight, fastened solid and squared up so the finishing coat looks as good as it lasts.",
+        "includes":  [
+            "Standard 1/2\" and 5/8\" gypsum board installation",
+            "Moisture-resistant (MR/green board) for wet areas",
+            "Fire-rated Type X board for code-required assemblies",
+            "Stairwells, vaulted ceilings and curved walls",
+            "All fastening to Alberta building code",
+            "Coordinated with our taping crew for a seamless finish",
+        ],
+        "faq_h2":    "Common questions about drywall installation in Edmonton.",
+        "faqs":      [
+            ("How much does drywall installation cost in Edmonton?",
+             "Drywall installation typically runs <strong>$1.75–$3.00 per sq ft</strong> depending on board type and project complexity. A full basement (800–1,000 sq ft) can range from $1,400–$3,000 for installation alone. Call for a free, no-obligation estimate."),
+            ("Do you use moisture-resistant or fire-rated drywall where required?",
+             "Yes. We specify and install the correct board type for each area — standard 1/2\", 5/8\" Type X (fire-rated) and MR board — to meet Alberta building code. We won't cut corners on fire-rated assemblies."),
+            ("Do you supply the drywall or does the homeowner provide materials?",
+             "We typically supply all materials as part of our project pricing. If you have materials on site already, we can work with what you have — just let us know upfront."),
+        ],
+        "link_desc": "Standard, moisture-resistant and fire-rated board — cut tight and code-compliant.",
+    },
+    {
+        "slug":      "steel-stud-framing",
+        "name":      "Steel Stud Framing",
+        "h1":        "Steel Stud <em>Framing</em><br>in Edmonton",
+        "badge":     "Steel Stud Framing · Edmonton, AB",
+        "meta":      "Light-gauge steel stud framing in Edmonton, AB — interior partitions, load-bearing walls and complex layouts. Residential & commercial. Free estimates.",
+        "hero_lead": "Precise light-gauge steel stud framing for Edmonton homes and commercial spaces — partition walls, load-bearing assemblies, curved features and complex layouts, straight and square every time. Free estimates · WCB insured · Since 2017.",
+        "intro":     "Summit Wall Solutions frames interior partitions, load-bearing walls and complex layouts using light-gauge galvanized steel studs — a durable, moisture-resistant alternative to wood that stays straight and plumb for the long term. We frame for basement developments, new builds, condo renovations and commercial TIs across Edmonton. Whether it's a simple partition wall or a multi-room basement layout with bulkheads and curved features, our framing crew delivers clean, code-compliant work.",
+        "includes":  [
+            "Interior partition walls (residential and commercial)",
+            "Load-bearing and exterior wall framing",
+            "Ceiling, soffit and bulkhead framing",
+            "Curved walls, radius features and coffered ceilings",
+            "Window and door rough openings framed to spec",
+            "All work to Alberta building code",
+        ],
+        "faq_h2":    "Common questions about steel stud framing in Edmonton.",
+        "faqs":      [
+            ("Why steel studs instead of wood framing for basements?",
+             "Steel studs don't warp, shrink or crack over time — they stay straight and plumb. They're lighter, easier to cut, non-combustible and preferred for commercial construction. For Edmonton basements, steel is especially popular because it won't absorb moisture the way wood can against a concrete foundation wall."),
+            ("Do you do steel stud framing for basement developments in Edmonton?",
+             "Yes — basement framing is one of our most common projects. We frame all partition walls, utility areas, egress windows and bedroom walls to Alberta building code. Framing a standard 800–1,000 sq ft basement typically takes <strong>1–2 days</strong>."),
+            ("Can you frame curved walls, bulkheads or non-standard layouts?",
+             "Yes. We regularly work on curved features, bulkheads, coffered ceilings and other non-standard layouts. Bring us the plans and we'll build it."),
+        ],
+        "link_desc": "Interior partitions, load-bearing walls and complex layouts — straight and square.",
+    },
+    {
+        "slug":      "taping-and-finishing",
+        "name":      "Taping & Finishing",
+        "h1":        "Taping &amp; <em>Finishing</em><br>in Edmonton",
+        "badge":     "Taping & Finishing · Edmonton, AB",
+        "meta":      "Professional drywall taping and finishing in Edmonton, AB — seamless joints, mudding and sanding for a paint-ready surface. Residential & commercial.",
+        "hero_lead": "Seamless drywall taping and finishing for Edmonton homes and businesses — tape, mud and sand to a Level 4 or Level 5 finish that's paint-ready and stands up to scrutiny under raking light. Free estimates · WCB insured · Since 2017.",
+        "intro":     "Summit Wall Solutions delivers clean, professional drywall taping and finishing for Edmonton basements, new builds, renovations and commercial spaces. Our finishers apply tape, compound and finish coats to eliminate every visible joint and seam — leaving walls and ceilings paint-ready with a flat, smooth surface. We work to Level 4 finish (standard residential) or Level 5 (premium/gloss applications) depending on the project specification.",
+        "includes":  [
+            "Paper and fibreglass mesh tape application",
+            "First coat, second coat and skim coat mudding",
+            "Sanding between coats for a smooth surface",
+            "Corner bead installation and finishing",
+            "Nail, screw and fastener dimple filling",
+            "Level 4 (residential) and Level 5 (premium/gloss) finishes available",
+        ],
+        "faq_h2":    "Common questions about drywall taping and finishing in Edmonton.",
+        "faqs":      [
+            ("What is the difference between Level 4 and Level 5 drywall finish?",
+             "Level 4 is standard residential quality — joints, fasteners and tape are filled and sanded smooth, suitable for flat or eggshell paint. Level 5 adds a full skim coat over the entire surface for a flawless result under gloss paint or critical lighting. We recommend Level 5 for ceilings with downlights and premium living spaces."),
+            ("How long does taping and finishing take in Edmonton?",
+             "A typical basement (800–1,000 sq ft) takes <strong>3–5 days</strong> for taping and finishing, including dry time between coats. We'll give you a clear timeline before work begins."),
+            ("Can you match existing wall texture on a renovation?",
+             "Yes. If you're renovating and need new drywall to blend with existing texture — orange peel, knockdown, smooth or anything in between — we can match it. Send us photos and we'll assess the work required."),
+        ],
+        "link_desc": "Seamless joints, mudding and sanding to Level 4 and Level 5 finishes.",
+    },
+    {
+        "slug":      "insulation",
+        "name":      "Insulation",
+        "h1":        "Insulation <em>Services</em><br>in Edmonton",
+        "badge":     "Insulation · Edmonton, AB",
+        "meta":      "Batt and sound attenuation insulation in Edmonton, AB — energy efficiency, fire separation and noise control. Installed to Alberta code. Free estimates.",
+        "hero_lead": "Code-compliant batt and sound-attenuation insulation for Edmonton homes — exterior walls, basement walls, party walls and ceiling assemblies, all installed to Alberta's energy code. Free estimates · WCB insured · Since 2017.",
+        "intro":     "Summit Wall Solutions installs batt and sound-attenuation insulation for Edmonton residential and commercial projects — exterior walls, basement frost walls, ceilings and interior partitions — all to Alberta's energy code and National Building Code requirements. We coordinate insulation with our framing and drywall crews so your wall assembly is handled by one accountable team, keeping the project moving without gaps between trades.",
+        "includes":  [
+            "Exterior wall batt insulation (Alberta R-20+ requirements)",
+            "Basement frost wall insulation",
+            "Sound attenuation insulation for bedrooms, bathrooms and media rooms",
+            "Fire-separation insulation for party walls and floor assemblies",
+            "Vapour barrier installation, sealed to code",
+            "All work to Alberta Building Code and NBC requirements",
+        ],
+        "faq_h2":    "Common questions about insulation in Edmonton.",
+        "faqs":      [
+            ("What R-value is required for Edmonton basement walls?",
+             "Edmonton's cold climate and Alberta's energy code require <strong>R-14 minimum</strong> for basement walls, though R-20 is strongly recommended for comfort and energy savings. Requirements vary by wall assembly type. We'll specify the right product and thickness for your project and permit."),
+            ("Do you supply and install the insulation?",
+             "Yes — we supply and install as part of our full wall package. There's no need to source materials separately. If you have materials already on site, we can work with those too. Just let us know when you call."),
+            ("Do you install vapour barrier as part of the insulation work?",
+             "Yes. Vapour barrier is a critical part of Alberta wall assemblies — we install it correctly as part of every insulation package, sealed at all edges and penetrations to code."),
+        ],
+        "link_desc": "Batt and sound insulation for energy efficiency, noise control and fire separation.",
+    },
+    {
+        "slug":      "painting",
+        "name":      "Interior Painting",
+        "h1":        "Interior <em>Painting</em><br>in Edmonton",
+        "badge":     "Interior Painting · Edmonton, AB",
+        "meta":      "Interior painting in Edmonton, AB — primer, walls, ceilings and trim. Clean lines, even coverage and a finish that lasts. Free estimates · WCB insured.",
+        "hero_lead": "Interior painting for Edmonton homes and businesses — primer and finish coats on new drywall or renovation surfaces, clean lines and even coverage. We paint after our own taping or yours. Free estimates · WCB insured · Since 2017.",
+        "intro":     "Summit Wall Solutions provides interior painting for Edmonton homes, basements, condo renovations and commercial tenant improvements. We finish every wall project with quality primer and topcoats — clean brush lines, roller texture matched to specification and a durable finish that holds up to daily life. Our painting crew works directly with our taping team, so we know the surface quality before the first primer coat goes on.",
+        "includes":  [
+            "Primer coat on all new drywall surfaces",
+            "Two finish coats on walls and ceilings",
+            "Trim, baseboard and door casing paint",
+            "Colour-matching on renovations",
+            "Drop cloth protection and clean setup/teardown",
+            "Low-VOC premium paints available on request",
+        ],
+        "faq_h2":    "Common questions about interior painting in Edmonton.",
+        "faqs":      [
+            ("Do you supply paint or does the homeowner choose and buy it?",
+             "You choose the colour and brand, we supply and apply it as part of our project pricing. If you have specific paint on hand, we can work with what you have. We recommend mid-sheen or eggshell for basements and high-traffic areas."),
+            ("Do you paint ceilings and trim as well as walls?",
+             "Yes — walls, ceilings, baseboards, trim and doors are all within our painting scope. We prime all new drywall first to seal the surface, then apply two finish coats for even, consistent coverage."),
+            ("Can you paint over another contractor's drywall work?",
+             "Yes. If your drywall was installed and taped by someone else, we'll assess the surface finish before starting and flag anything that needs attention. We can do touch-up skim coats if needed before priming."),
+        ],
+        "link_desc": "Primer, walls, ceilings and trim — quality finish coats on new drywall or renovations.",
+    },
+]
+
+
 def build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
           ld=None, biz=None, bc=None, faq_sc=None, site=""):
     _ld  = ld     or (lambda *a: "")
     _biz = biz    or (lambda: {})
     _bc  = bc     or (lambda c: {})
     _faq = faq_sc or (lambda f: {})
+
+    # Service guide link cards — used in services.html and generated as individual pages below
+    svc_guide_cards = "".join(
+        f'<div class="svc reveal">'
+        f'<span class="num">0{i+1}</span>'
+        f'<h3>{d["name"]}</h3>'
+        f'<p>{d["link_desc"]}</p>'
+        f'<div style="margin-top:18px"><a href="services/{d["slug"]}-edmonton.html" class="btn btn-dark">Full Guide &rarr;</a></div>'
+        f'</div>'
+        for i, d in enumerate(SVC_PAGE_DATA)
+    )
+
     # ---------- HOME ----------
     home = f'''
   <div class="ticker-wrap"><div class="ticker-track" id="tick">
@@ -121,6 +272,7 @@ def build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
 '''
     page("index.html", "Drywall Contractor in Edmonton, AB | Summit Wall Solutions",
          "Edmonton's trusted drywall contractor — steel framing, insulation, drywall installation, taping & painting. Free estimates. WCB insured.", home,
+         canonical="",
          schema=_ld(_biz()))
 
     # ---------- SERVICES ----------
@@ -138,6 +290,12 @@ def build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
       <div class="step reveal"><b>03</b><h3>Build</h3><p>Our crew arrives on schedule, works clean and communicates throughout.</p></div>
       <div class="step reveal"><b>04</b><h3>Sign Off</h3><p>We walk the finished job with you. Not done until you're satisfied.</p></div>
     </div></div></section>
+  <section class="section"><div class="wrap">
+    <div class="reveal"><div class="eyebrow">Edmonton Service Guides</div>
+    <h2>Go deeper on any service.</h2>
+    <p class="intro">Detailed pages for Edmonton homeowners and contractors — what each service includes, pricing guidance and specific FAQs.</p></div>
+    <div class="svc-grid" style="margin-top:32px">{svc_guide_cards}</div>
+  </div></section>
   {cta_strip(PHONE)}
 '''
     page("services.html", "Drywall &amp; Steel Framing Services in Edmonton | Summit Wall Solutions",
@@ -382,27 +540,197 @@ def build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
          schema=_ld(_biz(), _bc([("Home", site+"/"), ("Service Areas", site+"/locations.html")])))
 
     # ---------- CITY PAGES (SEO) ----------
-    for slug,name in CITIES:
+    city_data = {
+        "edmonton": {
+            "meta": "Drywall contractor in Edmonton, AB — basement development, infill rebuilds, new builds in Keswick, Rosenthal and Chappelle. Free estimates · WCB insured.",
+            "hero_lead": "Serving Edmonton's established neighbourhoods and fast-growing new communities — basement finishing in mature areas, infill rebuilds, and full drywall packages in Keswick, Glenridding Ravine, Rosenthal, Secord, Chappelle and Edgemont. Free estimates · WCB insured · Since 2017.",
+            "h2": "Edmonton's drywall contractor — from mature neighbourhood to new build.",
+            "intro": "Summit Wall Solutions works across Edmonton's full housing spectrum: finishing basements in mature southwest and west-end neighbourhoods, taking on infill rebuilds throughout the city, and delivering complete drywall packages — framing through final paint — on new builds in fast-growing communities like Keswick, Glenridding Ravine, Rosenthal, Secord, Laurel, Cy Becker, Chappelle and Edgemont. We also handle condo renovations and commercial tenant improvements across Edmonton's growing core.",
+            "nbhds": ["Keswick","Glenridding Ravine","Rosenthal","Secord","Laurel","Cy Becker","Chappelle","Edgemont"],
+            "faq_h2": "Common questions about drywall work in Edmonton.",
+            "faqs": [
+                ("Do you do basement development in Edmonton?",
+                 "Yes — basement development is one of our most common projects. We handle the full scope: framing, insulation, drywall, taping, painting and cleanup. Most Edmonton basements take <strong>1–2 weeks</strong> depending on size. Call for a free, no-obligation estimate."),
+                ("Do you work on infill or mature-neighbourhood renovations?",
+                 "Absolutely. We regularly work in Edmonton's established neighbourhoods on infill rebuilds, gut-and-redo renovations and room additions. Our crew knows how to work in occupied homes and can match existing textures and finish levels."),
+                ("Can you handle condo or commercial tenant improvements in Edmonton?",
+                 "Yes. We take on condo renovations and commercial TI projects throughout Edmonton — partition walls, fire-rated assemblies and finish work. Call or email for a commercial quote."),
+            ],
+        },
+        "st-albert": {
+            "meta": "Drywall contractor in St. Albert — new builds in Jensen Lakes, Riverside & Cherot, plus basement development and legal secondary suites. Free estimates.",
+            "hero_lead": "Serving St. Albert's growing communities — Riverside, Cherot, Jensen Lakes, Erin Ridge North and North Ridge — with full drywall packages, basement finishing and legal secondary suites. Free estimates · WCB insured · Since 2017.",
+            "h2": "St. Albert's drywall contractor for new builds, basements and secondary suites.",
+            "intro": "Summit Wall Solutions is a trusted drywall contractor in St. Albert, working with homeowners and builders across the city. We install full drywall packages for new-home builders in St. Albert's newest communities — Riverside, Cherot, Jensen Lakes, Erin Ridge North and North Ridge — and we finish basements and legal secondary suites in established neighbourhoods throughout the city. With St. Albert's continued growth, we understand the demand for reliable trades who show up on time, communicate clearly and deliver code-compliant work.",
+            "nbhds": ["Riverside","Cherot","Jensen Lakes","Erin Ridge North","North Ridge"],
+            "faq_h2": "Common questions about drywall in St. Albert.",
+            "faqs": [
+                ("Do you build legal secondary suites in St. Albert?",
+                 "Yes. Secondary suites require fire-rated wall assemblies, proper insulation and permit-ready workmanship — all areas we cover. We work with St. Albert's building requirements and can deliver documentation your inspection needs. Call to discuss your project."),
+                ("Do you supply drywall for new homes in St. Albert's new communities?",
+                 "Yes. We're active in Jensen Lakes, Riverside and Cherot, working with builders or homeowners on full packages from framing through paint. Ask about our production-build scheduling and pricing."),
+                ("Is there a travel fee to reach St. Albert?",
+                 "No — St. Albert is part of our regular service area with no travel surcharge. Most projects are scheduled within <strong>48 hours of estimate approval</strong>."),
+            ],
+        },
+        "sherwood-park": {
+            "meta": "Drywall contractor in Sherwood Park — basements, bonus rooms and renovations in Hillshire West, Summerwood and Aspen Trail. Free estimates · WCB insured.",
+            "hero_lead": "Serving Strathcona County's growing communities — Hillshire West, Cambrian, Summerwood and Aspen Trail — for basement development, bonus-room finishing and commercial drywall. Free estimates · WCB insured · Since 2017.",
+            "h2": "Sherwood Park's drywall contractor — big homes, quality finishing.",
+            "intro": "Summit Wall Solutions brings professional drywall contractor service to Sherwood Park and Strathcona County. We're active in communities like Hillshire West, Cambrian, Summerwood and Aspen Trail, where many of the area's larger family homes have full undeveloped basements ready to finish. We handle basement developments, bonus-room finishing, garage conversions and full renovation drywall — and we take on commercial and office TI work in Strathcona County's business developments.",
+            "nbhds": ["Hillshire West","Cambrian","Summerwood","Aspen Trail","Emerald Hills"],
+            "faq_h2": "Common questions about drywall in Sherwood Park.",
+            "faqs": [
+                ("Do you develop basements in Sherwood Park?",
+                 "Yes — basement development is very common in Sherwood Park's larger homes. We handle the full scope: framing, insulation, drywall, taping, painting and cleanup. Most basements in the 800–1,200 sq ft range take <strong>1–2 weeks</strong>. Call for a free, no-obligation estimate."),
+                ("Can you finish a garage, bonus room or home office in Sherwood Park?",
+                 "Absolutely. Garage conversions, bonus-room finishing and home-office build-outs are projects we handle regularly — framing, insulation and drywall work to get the space code-ready and move-in ready."),
+                ("Do you do commercial drywall in Strathcona County?",
+                 "Yes. We handle commercial projects — partition walls, T-bar ceilings, fire-rated assemblies and tenant improvements — in Strathcona County's business parks and commercial developments. Call for a commercial quote."),
+            ],
+        },
+        "spruce-grove": {
+            "meta": "Drywall contractor in Spruce Grove — new-build drywall packages, basement development and renovations. Free estimates · WCB insured · Since 2017.",
+            "hero_lead": "Serving Spruce Grove's new-build communities and established homes with full drywall packages for builders, basement development and residential renovations. Free estimates · WCB insured · Since 2017.",
+            "h2": "Spruce Grove's drywall contractor for new builds, basements and renovations.",
+            "intro": "As Spruce Grove continues to grow as one of Edmonton's most active bedroom communities, Summit Wall Solutions supports both the new-home construction market and the renovation scene. We work with Spruce Grove area builders on complete new-build drywall packages — framing through final paint — and we develop basements in completed homes throughout the city. Whether you're finishing a new home or adding living space below grade, we deliver clean, code-compliant drywall work on schedule.",
+            "nbhds": ["Jesperdale","Kingswood","Broxton Park","Grove Meadows","Calahoo"],
+            "faq_h2": "Common questions about drywall in Spruce Grove.",
+            "faqs": [
+                ("Do you do drywall for new homes in Spruce Grove?",
+                 "Yes. We work with Spruce Grove area builders on full new-build drywall packages — framing through final paint. We understand production-build timelines and can coordinate with other trades. Call to discuss scheduling and pricing."),
+                ("Can you develop a basement in Spruce Grove?",
+                 "Absolutely. Basement development in Spruce Grove includes framing, insulation (to Alberta code), drywall, taping and painting — full scope, clean site after every phase. Most basements take <strong>1–2 weeks</strong>. Call for a free estimate."),
+                ("Do you also serve Stony Plain?",
+                 "Yes — we serve both Spruce Grove and Stony Plain with no travel surcharge. Call 587-357-8181 to schedule your free estimate."),
+            ],
+        },
+        "leduc": {
+            "meta": "Drywall contractor in Leduc — new builds and basements in Southfork &amp; Robinson, plus commercial TI work near Nisku. Free estimates · WCB insured.",
+            "hero_lead": "Serving Leduc's growing communities — Southfork, Robinson, West Haven and Meadowview — plus commercial and tenant improvement work in Nisku and the Edmonton International Airport corridor. Free estimates · WCB insured · Since 2017.",
+            "h2": "Leduc's drywall contractor — residential and commercial.",
+            "intro": "Leduc sits at the heart of one of Alberta's most active construction corridors — fast-growing residential communities alongside a major industrial and commercial zone anchored by Edmonton International Airport and Nisku. Summit Wall Solutions serves both sides: full drywall packages (new builds and basement development) in Leduc communities like Southfork, Robinson, West Haven and Meadowview, and commercial and tenant improvement projects in the Nisku industrial area and along the Highway 2 corridor.",
+            "nbhds": ["Southfork","Robinson","West Haven","Meadowview","Woodbend"],
+            "faq_h2": "Common questions about drywall in Leduc.",
+            "faqs": [
+                ("Do you do commercial drywall near Nisku and the airport?",
+                 "Yes. We handle commercial drywall — partition walls, drop ceilings, fire-rated assemblies and tenant improvements — for industrial offices, warehouse interiors and commercial properties in the Nisku zone and Edmonton International Airport corridor. Call for a commercial quote."),
+                ("Do you develop basements in Leduc?",
+                 "Yes — we develop basements in Leduc communities including Southfork, Robinson and West Haven. Full scope: framing, insulation, drywall, taping, painting and cleanup. Call for a free, no-obligation estimate."),
+                ("Is there a travel surcharge for Leduc?",
+                 "No — Leduc is part of our regular service area with no travel surcharge. We're on the road south regularly. Call 587-357-8181 or email to schedule your free estimate."),
+            ],
+        },
+    }
+    for slug, name in CITIES:
+        d = city_data.get(slug, {})
+        meta       = d.get("meta",      f"Drywall contractor in {name}, AB — steel framing, insulation, drywall installation, taping & painting. Free estimates. Call {PHONE}.")
+        hero_lead  = d.get("hero_lead", f"Your trusted drywall contractor in {name} for steel framing, insulation, drywall, taping and painting. Free estimates · WCB insured · Since 2017.")
+        h2         = d.get("h2",        f"Your drywall contractor in {name}, AB.")
+        intro      = d.get("intro",     f"Summit Wall Solutions is {name}'s trusted drywall contractor for basement development, renovations and new builds.")
+        faq_h2     = d.get("faq_h2",    f"Common questions about drywall in {name}.")
+        faqs       = d.get("faqs",      [])
+        nbhds      = d.get("nbhds",     [])
+
+        nbhd_tags  = "".join(f"<span>{n}</span>" for n in nbhds)
+        nbhd_block = (f'<div class="eyebrow" style="margin-top:32px">Neighbourhoods we serve</div>'
+                      f'<div class="svc-tags" style="margin-top:10px">{nbhd_tags}</div>') if nbhd_tags else ""
+
+        faq_items  = "".join(
+            f'<div class="faq-item"><div class="faq-q"><h3>{q}</h3><span class="pm">+</span></div>'
+            f'<div class="faq-a"><p>{a}</p></div></div>'
+            for q, a in faqs
+        )
+        faq_block  = (f'<section class="section alt"><div class="wrap">'
+                      f'<div class="reveal"><div class="eyebrow">FAQ</div><h2>{faq_h2}</h2></div>'
+                      f'<div class="faq reveal">{faq_items}</div></div></section>') if faq_items else ""
+
+        schema_parts = [_biz()]
+        if faqs:
+            schema_parts.append(_faq(faqs))
+        schema_parts.append(_bc([
+            ("Home",            site+"/"),
+            ("Service Areas",   site+"/locations.html"),
+            (f"Drywall {name}", site+f"/locations/drywall-{slug}.html"),
+        ]))
+
         body = f'''
   <section class="hero compact"><div class="hero-bg"><div class="sweep s1"></div><div class="sweep s2"></div></div>
     <div class="wrap"><div class="eyebrow-badge reveal in"><i></i> {name}, AB</div>
       <h1 class="reveal in">Drywall <em>Contractor</em><br>in {name}</h1>
-      <p class="lead reveal in">Your trusted drywall contractor in {name} for steel framing, insulation, drywall installation, taping and painting. Free estimates · WCB insured · Since 2017.</p>
+      <p class="lead reveal in">{hero_lead}</p>
       <div class="hero-actions reveal in"><a href="tel:5873578181" class="btn btn-primary">Call {PHONE}</a><a href="../contact.html" class="btn btn-ghost">Free Estimate</a></div></div></section>
   <section class="section"><div class="wrap">
-    <div class="reveal"><div class="eyebrow">{name} Wall Services</div><h2>Your drywall contractor in {name}, AB.</h2>
-    <p class="intro">Summit Wall Solutions is {name}'s trusted drywall contractor. Whether it's a basement development, a renovation or a new build, our crew delivers clean, code-compliant work — on time and on budget.</p></div>
+    <div class="reveal"><div class="eyebrow">{name} Wall Services</div><h2>{h2}</h2>
+    <p class="intro">{intro}</p>
+    {nbhd_block}</div>
     {svc_grid()}</div></section>
   {promises()}
+  {faq_block}
   {testimonials()}
   {cta_strip(PHONE)}
 '''
         page(f"locations/drywall-{slug}.html",
              f"Drywall Contractor in {name}, AB | Framing, Taping & Painting",
-             f"Drywall contractor in {name}, AB — steel framing, insulation, drywall installation, taping & painting. Free estimates. Call {PHONE}.",
+             meta,
              body, rel="../", canonical=f"locations/drywall-{slug}.html", body_class="dark-hero",
-             schema=_ld(_biz(), _bc([
-                 ("Home",          site+"/"),
-                 ("Service Areas", site+"/locations.html"),
-                 (f"Drywall {name}", site+f"/locations/drywall-{slug}.html"),
+             schema=_ld(*schema_parts))
+
+    # ---------- SERVICE SEO PAGES (/services/) ----------
+    chk = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"'
+           ' width="18" height="18" style="flex-shrink:0;color:var(--maroon);margin-top:2px">'
+           '<polyline points="20 6 9 17 4 12"/></svg>')
+    for d in SVC_PAGE_DATA:
+        inc_items = "".join(
+            f'<li style="display:flex;align-items:flex-start;gap:12px;padding:9px 0;'
+            f'font-size:15px;color:#4a4340;border-bottom:1px solid rgba(139,99,78,.08)">'
+            f'{chk}<span>{item}</span></li>'
+            for item in d["includes"]
+        )
+        includes_html = f'<ul style="list-style:none;padding:0;margin:24px 0 0;max-width:680px">{inc_items}</ul>'
+
+        faq_items = "".join(
+            f'<div class="faq-item"><div class="faq-q"><h3>{q}</h3><span class="pm">+</span></div>'
+            f'<div class="faq-a"><p>{a}</p></div></div>'
+            for q, a in d["faqs"]
+        )
+        faq_block = (
+            f'<section class="section alt"><div class="wrap">'
+            f'<div class="reveal"><div class="eyebrow">FAQ</div><h2>{d["faq_h2"]}</h2></div>'
+            f'<div class="faq reveal">{faq_items}</div></div></section>'
+        )
+
+        svc_body = f'''
+  <section class="hero compact"><div class="hero-bg"><div class="sweep s1"></div><div class="sweep s2"></div></div>
+    <div class="wrap"><div class="eyebrow-badge reveal in"><i></i> {d["badge"]}</div>
+      <h1 class="reveal in">{d["h1"]}</h1>
+      <p class="lead reveal in">{d["hero_lead"]}</p>
+      <div class="hero-actions reveal in">
+        <a href="tel:5873578181" class="btn btn-primary">Call {PHONE}</a>
+        <a href="../contact.html" class="btn btn-ghost">Free Estimate</a>
+      </div></div></section>
+  <section class="section"><div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">{d["name"]} · Edmonton, AB</div>
+      <h2>What&rsquo;s included.</h2>
+      <p class="intro">{d["intro"]}</p>
+      {includes_html}
+    </div>
+  </div></section>
+  {promises()}
+  {faq_block}
+  {cta_strip(PHONE)}
+'''
+        svc_file = f'services/{d["slug"]}-edmonton.html'
+        page(svc_file,
+             f'{d["name"]} in Edmonton, AB | Summit Wall Solutions',
+             d["meta"],
+             svc_body,
+             rel="../",
+             canonical=svc_file,
+             body_class="dark-hero",
+             schema=_ld(_biz(), _faq(d["faqs"]), _bc([
+                 ("Home",         site+"/"),
+                 ("Services",     site+"/services.html"),
+                 (f'{d["name"]} in Edmonton', site+f'/{svc_file}'),
              ])))

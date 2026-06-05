@@ -124,6 +124,7 @@ def head(title, desc, rel="", canonical="", body_class="", schema=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="{SITE}/{canonical}">
   <meta property="og:image" content="https://summitwallsolutions.com/assets/van.webp">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://summitwallsolutions.com/assets/van.webp">
@@ -184,7 +185,8 @@ def footer(rel=""):
       </div>
       <div class="foot-bottom">
         <span>&copy; <span id="year"></span> Summit Wall Solutions — Rodrigo Gadelha Bandeira. All rights reserved.</span>
-        <span>Edmonton, AB · {PHONE} · Licensed & WCB Insured</span>
+        <span>Edmonton, AB · {PHONE} · Licensed &amp; WCB Insured</span>
+        <a href="{rel}privacy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
@@ -200,10 +202,111 @@ def page(filename, title, desc, body, rel="", canonical=None, subdir=False, body
     target.write_text(html, encoding="utf-8")
     print("wrote", filename)
 
+def build_extra_pages():
+    """404 and Privacy pages — defined inline, not in bodies.py."""
+
+    # ── 404 ──────────────────────────────────────────────────────────────
+    body_404 = """
+  <section class="hero compact"><div class="hero-bg">
+    <div class="sweep s1"></div><div class="sweep s2"></div><div class="sweep s3"></div></div>
+    <div class="wrap">
+      <div class="eyebrow-badge reveal in"><i></i> 404 — Page Not Found</div>
+      <h1 class="reveal in">This Page<br>Doesn't <em>Exist</em></h1>
+      <p class="lead reveal in">Looks like this page was removed or never existed.<br>Let's get you back on solid ground.</p>
+      <div class="hero-actions reveal in">
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+        <a href="services.html" class="btn btn-ghost">Our Services</a>
+        <a href="contact.html" class="btn btn-ghost">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+"""
+    page("404.html",
+         "Page Not Found | Summit Wall Solutions",
+         "The page you're looking for doesn't exist. Head back to Summit Wall Solutions — Edmonton's trusted drywall contractor.",
+         body_404,
+         body_class="dark-hero",
+         schema=ld(_biz()))
+
+    # ── Privacy Policy ────────────────────────────────────────────────────
+    body_privacy = f"""
+  <section class="hero compact"><div class="hero-bg">
+    <div class="sweep s1"></div><div class="sweep s2"></div><div class="sweep s3"></div></div>
+    <div class="wrap">
+      <div class="eyebrow-badge reveal in"><i></i> Legal</div>
+      <h1 class="reveal in">Privacy<br><em>Policy</em></h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width:780px">
+      <div class="reveal">
+        <p style="font-size:14px;color:var(--grey);margin:0 0 40px">Effective June 2026 &mdash; Summit Wall Solutions, Edmonton, AB, Canada</p>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">1. Who We Are</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:20px">Summit Wall Solutions is a drywall and wall-finishing contractor based in Edmonton, Alberta, Canada. Our website is <strong>summitwallsolutions.com</strong>. We are owned and operated by Rodrigo Gadelha Bandeira.</p>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">2. What Information We Collect</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:12px">When you submit a quote request or contact form on our site, we collect the following information that you voluntarily provide:</p>
+        <ul style="font-size:16px;line-height:2;color:#4a4340;margin:0 0 20px;padding-left:24px">
+          <li>Full name</li>
+          <li>Phone number</li>
+          <li>Email address (if provided)</li>
+          <li>Project details (type, location, scope, timeline, and any notes you include)</li>
+        </ul>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:20px">We do not use tracking cookies, third-party analytics, or advertising pixels. We do not automatically collect IP addresses or device information beyond what your browser transmits as part of a standard web request.</p>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">3. How We Use Your Information</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:12px">We use the information you submit solely to:</p>
+        <ul style="font-size:16px;line-height:2;color:#4a4340;margin:0 0 20px;padding-left:24px">
+          <li>Respond to your estimate request or inquiry</li>
+          <li>Contact you to schedule a site visit or discuss your project</li>
+          <li>Follow up on prior conversations at your request</li>
+        </ul>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:20px">We do not send marketing emails, newsletters, or unsolicited communications.</p>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">4. How We Share Your Information</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:12px">We do not sell, rent, or share your personal information with third parties, with the following exceptions:</p>
+        <ul style="font-size:16px;line-height:2;color:#4a4340;margin:0 0 20px;padding-left:24px">
+          <li><strong>Web3Forms:</strong> If our contact form is configured to use Web3Forms (<a href="https://web3forms.com" style="color:var(--maroon)">web3forms.com</a>), your submitted information is routed through their service to deliver it to our inbox. Web3Forms acts as a data processor on our behalf and is bound by their own privacy policy.</li>
+          <li><strong>Legal requirements:</strong> If required by law, court order, or to protect our legal rights.</li>
+        </ul>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">5. Data Retention</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:20px">We retain your contact information for as long as is necessary to complete your project or respond to your inquiry. You may ask us to delete your information at any time by contacting us directly.</p>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">6. Your Rights (PIPA)</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:12px">Under Alberta&rsquo;s <em>Personal Information Protection Act</em> (PIPA) and applicable Canadian privacy law, you have the right to:</p>
+        <ul style="font-size:16px;line-height:2;color:#4a4340;margin:0 0 20px;padding-left:24px">
+          <li>Know what personal information we hold about you</li>
+          <li>Request correction of inaccurate information</li>
+          <li>Request deletion of your information</li>
+          <li>Withdraw consent to its use at any time</li>
+        </ul>
+
+        <h3 style="font-family:var(--D);font-size:18px;text-transform:uppercase;letter-spacing:.06em;color:var(--maroon);margin:36px 0 10px">7. Contact Us</h3>
+        <p style="font-size:16px;line-height:1.75;color:#4a4340;margin-bottom:6px">For any privacy questions or to exercise your rights:</p>
+        <p style="font-size:16px;line-height:2;color:#4a4340;margin-bottom:40px">
+          Email: <a href="mailto:{EMAIL}" style="color:var(--maroon)">{EMAIL}</a><br>
+          Phone: <a href="tel:5873578181" style="color:var(--maroon)">{PHONE}</a><br>
+          Edmonton, AB, Canada
+        </p>
+      </div>
+    </div>
+  </section>
+"""
+    page("privacy.html",
+         "Privacy Policy | Summit Wall Solutions",
+         "Summit Wall Solutions privacy policy — what we collect, how we use it, and your rights under Alberta's PIPA.",
+         body_privacy,
+         schema=ld(_biz(), _bc([("Home", SITE+"/"), ("Privacy Policy", SITE+"/privacy.html")])))
+
+
 # Import body fragments
 from pages import bodies  # noqa
 
 if __name__ == "__main__":
     bodies.build(page, CITIES, PHONE, EMAIL, EMAIL_DIRECT,
                  ld=ld, biz=_biz, bc=_bc, faq_sc=_faq, site=SITE)
+    build_extra_pages()
     print("Done.")
