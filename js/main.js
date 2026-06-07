@@ -100,11 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /* ---- Contact form ----
-     Default: opens a pre-filled email (mailto).
-     To make it submit silently, create a free Web3Forms access key
-     (https://web3forms.com) and set FORM_ACCESS_KEY below. */
-  const FORM_ACCESS_KEY = ''; // <-- paste Web3Forms key here to enable AJAX submit
+  /* ---- Contact / sub-quote forms (Web3Forms) ---- */
+  const FORM_ACCESS_KEY = 'ec3f8a84-e317-47a9-a80b-371bcf405ab8';
   const form = document.getElementById('quote-form');
   if (form) {
     form.addEventListener('submit', async (e) => {
@@ -114,19 +111,27 @@ document.addEventListener('DOMContentLoaded', function () {
       data.project_type = typeChip ? typeChip.dataset.ptype : 'Residential';
       if (!data.name || !data.phone) { alert('Please add your name and phone.'); return; }
 
-      if (FORM_ACCESS_KEY) {
-        try {
-          const r = await fetch('https://api.web3forms.com/submit', {
-            method:'POST', headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({ access_key: FORM_ACCESS_KEY, subject:'New estimate request — Summit Wall', ...data })
-          });
-          if (r.ok) { showSuccess(); return; }
-        } catch (_) {}
-      }
+      const formSubject  = form.dataset.subject  || 'New Quote Request — Summit Wall';
+      const formFromName = form.dataset.fromName || 'Summit Wall Solutions Website';
+
+      try {
+        const r = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: FORM_ACCESS_KEY,
+            subject:    formSubject,
+            from_name:  formFromName,
+            ...data
+          })
+        });
+        if (r.ok) { showSuccess(); return; }
+      } catch (_) {}
+
       // Fallback: mailto
-      const subject = encodeURIComponent('Free Estimate Request — ' + (data.service||'') + ' (' + data.project_type + ')');
-      const body = encodeURIComponent('Name: '+data.name+'\nPhone: '+data.phone+'\nType: '+data.project_type+'\nService: '+(data.service||'')+'\n\n'+(data.message||''));
-      window.location.href = 'mailto:contact@summitwallsolutions.com?subject='+subject+'&body='+body;
+      const subject = encodeURIComponent(formSubject + ' — ' + (data.service || data.project_type || ''));
+      const body    = encodeURIComponent('Name: ' + data.name + '\nPhone: ' + data.phone + '\nType: ' + data.project_type + '\nService: ' + (data.service || '') + '\n\n' + (data.message || ''));
+      window.location.href = 'mailto:contact@summitwallsolutions.com?subject=' + subject + '&body=' + body;
       showSuccess();
     });
   }
