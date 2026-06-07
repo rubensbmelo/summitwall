@@ -187,6 +187,7 @@ def footer(rel=""):
         <span>&copy; <span id="year"></span> Summit Wall Solutions — Rodrigo Gadelha Bandeira. All rights reserved.</span>
         <span>Edmonton, AB · {PHONE} · Licensed &amp; WCB Insured</span>
         <a href="{rel}privacy.html">Privacy Policy</a>
+        <span class="foot-credit">Website by <a href="https://www.linkedin.com/in/rubensbandeira" target="_blank" rel="noopener noreferrer">Rubens Bandeira</a></span>
       </div>
     </div>
   </footer>

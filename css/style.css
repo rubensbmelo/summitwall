@@ -214,6 +214,9 @@ body.dark-hero .site-header:not(.scrolled) .brand img{filter:brightness(0) inver
 .foot-social a:hover{border-color:var(--maroon-b);color:var(--maroon-b)}
 .foot-social svg{width:16px;height:16px}
 .foot-bottom{margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:12.5px;color:rgba(255,255,255,.4)}
+.foot-credit{opacity:.6;font-size:12px}
+.foot-credit a{color:inherit;text-decoration:none;transition:color .25s}
+.foot-credit a:hover{color:var(--maroon-b)}
 
 /* ---------- PHOTO BLOCKS ---------- */
 .hero-photo-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
