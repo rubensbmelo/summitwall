@@ -107,8 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
+      const ptypeLabels = { res: 'Residential', com: 'Commercial', ti: 'Tenant Improvement' };
       const typeChip = document.querySelector('[data-ptype].active');
-      data.project_type = typeChip ? typeChip.dataset.ptype : 'Residential';
+      const ptypeRaw = typeChip ? typeChip.dataset.ptype : 'res';
+      data.project_type = ptypeLabels[ptypeRaw] || ptypeRaw;
       if (!data.name || !data.phone) { alert('Please add your name and phone.'); return; }
 
       const formSubject  = form.dataset.subject  || 'New Quote Request — Summit Wall';
